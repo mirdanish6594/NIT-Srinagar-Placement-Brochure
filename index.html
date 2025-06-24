@@ -162,21 +162,22 @@
         <a id="btnDownPdf" href="https://mirdanish6594.github.io/NIT-Srinagar-Placement-Brochure/NIT%20Srinagar%20Placement%20Brochure%20AY-(25-26).pdf" data-stats="download" target="_blank" class="hz-icon hz-icn-down down-pdf" style="display: none; background-image: url('https://cdnc.heyzine.com/flipbook/img/iconset2_6.png')"></a>
         <!--<a id="btnPrint" data-print="https://mirdanish6594.github.io/NIT-Srinagar-Placement-Brochure/NIT%20Srinagar%20Placement%20Brochure%20AY-(25-26).pdf" data-stats="print" class="hz-icon-2 hz-icn-print" style="display: none; background-image: url('https://cdnc.heyzine.com/flipbook/img/iconset2_6.png')"></a> -->
         <a id="btnPrint" 
-   href="https://mirdanish6594.github.io/NIT-Srinagar-Placement-Brochure/NIT%20Srinagar%20Placement%20Brochure%20AY-(25-26).pdf" 
-   target="_blank" 
    class="hz-icon-2 hz-icn-print" 
    style="background-image: url('https://cdnc.heyzine.com/flipbook/img/iconset2_6.png'); cursor: pointer;">
 </a>
 
+<iframe id="printFrame" style="display: none;"></iframe>
+
 <script>
-    document.getElementById('btnPrint').addEventListener('click', function(event) {
-        event.preventDefault();
-        const pdfUrl = this.href;
-        const printWindow = window.open(pdfUrl, '_blank');
+    document.getElementById('btnPrint').addEventListener('click', function() {
+        const pdfUrl = "https://mirdanish6594.github.io/NIT-Srinagar-Placement-Brochure/NIT%20Srinagar%20Placement%20Brochure%20AY-(25-26).pdf";
+        const iframe = document.getElementById('printFrame');
         
-        // Wait for the PDF to load before triggering print
-        printWindow.onload = function() {
-            printWindow.print();
+        iframe.src = pdfUrl;
+        
+        iframe.onload = function() {
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
         };
     });
 </script>
