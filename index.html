@@ -16,159 +16,322 @@
    <style>
         /* Flipbook Alignment Fixes */
 
-        /* Logo alignment fixes */
-        .logo-backs2 {
-            position: absolute !important;
-            bottom: 16px !important;
-            left: 16px !important;
-            max-height: 20% !important;
-            width: auto !important;
-            height: auto !important;
-            z-index: 10 !important;
-        }
+/* Flipbook Alignment Fixes - Enhanced */
 
-        /* Control panel alignment fixes */
-        #pnlControls {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 8px !important;
-            padding: 6px 10px !important;
-            border-radius: 25px !important;
-            box-sizing: border-box !important;
-        }
+/* Remove excessive top spacing from flipbook container */
+.flipbook-container,
+#flipbook,
+.magazine-viewport {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
 
-        /* Button base alignment */
-        #pnlControls a, 
-        #pnlControls button {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 40px !important;
-            height: 40px !important;
-            min-width: 40px !important;
-            min-height: 40px !important;
-            border-radius: 50% !important;
-            box-sizing: border-box !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            text-decoration: none !important;
-            border: none !important;
-            background: transparent !important;
-            cursor: pointer !important;
-            flex-shrink: 0 !important;
-        }
+/* Ensure flipbook takes full available height */
+.flipbook-wrapper {
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+}
 
-        /* Icon alignment within buttons */
-        #pnlControls .hz-icon,
-        #pnlControls .hz-icon-2 {
-            width: 20px !important;
-            height: 20px !important;
-            background-size: 20px 20px !important;
-            background-repeat: no-repeat !important;
-            background-position: center !important;
-            display: block !important;
-            margin: 0 auto !important;
-        }
+/* Logo alignment fixes */
+.logo-backs2 {
+    position: absolute !important;
+    bottom: 16px !important;
+    left: 16px !important;
+    max-height: 20% !important;
+    width: auto !important;
+    height: auto !important;
+    z-index: 10 !important;
+}
 
-        /* Specific button adjustments */
-        #btnNavStart,
-        #btnNavPrev,
-        #btnNavNext, 
-        #btnNavEnd {
-            width: 36px !important;
-            height: 36px !important;
-            min-width: 36px !important;
-            min-height: 36px !important;
-        }
+/* Control panel alignment fixes */
+#pnlControls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 6px 10px !important;
+    border-radius: 25px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
 
-        #btnNavStart .hz-icon,
-        #btnNavPrev .hz-icon,
-        #btnNavNext .hz-icon,
-        #btnNavEnd .hz-icon {
-            width: 16px !important;
-            height: 16px !important;
-            background-size: 16px 16px !important;
-        }
+/* Button base alignment with icon visibility fixes */
+#pnlControls a, 
+#pnlControls button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-radius: 50% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    overflow: visible !important;
+}
 
-        /* Action buttons (share, download, print, etc.) */
-        #btnShare,
-        #btnDownPdf,
-        #btnPrint,
-        #btnFullscreen,
-        #btnSearch {
-            width: 42px !important;
-            height: 42px !important;
-            min-width: 42px !important;
-            min-height: 42px !important;
-        }
+/* Icon alignment within buttons - Enhanced visibility */
+#pnlControls .hz-icon,
+#pnlControls .hz-icon-2 {
+    width: 20px !important;
+    height: 20px !important;
+    background-size: 20px 20px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    display: block !important;
+    margin: 0 auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
 
-        #btnShare .hz-icon-2,
-        #btnDownPdf .hz-icon,
-        #btnPrint .hz-icon-2,
-        #btnFullscreen .hz-icon,
-        #btnSearch .hz-icon-2 {
-            width: 22px !important;
-            height: 22px !important;
-            background-size: 22px 22px !important;
-        }
+/* Ensure icon backgrounds are loaded and visible */
+#pnlControls .hz-icon:before,
+#pnlControls .hz-icon-2:before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: inherit !important;
+    opacity: 1 !important;
+}
 
-        /* Zoom controls alignment */
-        .zoom-icon {
-            width: 38px !important;
-            height: 38px !important;
-            min-width: 38px !important;
-            min-height: 38px !important;
-        }
+/* Fallback for missing background images - use Unicode symbols */
+#btnNavStart .hz-icon:after {
+    content: '⏮' !important;
+    font-size: 14px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #333 !important;
+}
 
-        .zoom-icon.hz-icon {
-            width: 18px !important;
-            height: 18px !important;
-            background-size: 18px 18px !important;
-        }
+#btnNavPrev .hz-icon:after {
+    content: '◀' !important;
+    font-size: 12px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #333 !important;
+}
 
-        /* Hover states for better visual feedback */
-        #pnlControls a:hover,
-        #pnlControls button:hover {
-            background: rgba(0,0,0,0.1) !important;
-            transform: scale(1.05) !important;
-            transition: all 0.2s ease !important;
-        }
+#btnNavNext .hz-icon:after {
+    content: '▶' !important;
+    font-size: 12px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #333 !important;
+}
 
-        /* Active states */
-        #pnlControls a:active,
-        #pnlControls button:active {
-            transform: scale(0.95) !important;
-        }
+#btnNavEnd .hz-icon:after {
+    content: '⏭' !important;
+    font-size: 14px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #333 !important;
+}
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            #pnlControls a,
-            #pnlControls button {
-                width: 36px !important;
-                height: 36px !important;
-                min-width: 36px !important;
-                min-height: 36px !important;
-            }
-            
-            #pnlControls .hz-icon,
-            #pnlControls .hz-icon-2 {
-                width: 18px !important;
-                height: 18px !important;
-                background-size: 18px 18px !important;
-            }
-            
-            #pnlControls {
-                gap: 6px !important;
-                padding: 4px 8px !important;
-            }
-            
-            .logo-backs2 {
-                bottom: 12px !important;
-                left: 12px !important;
-                max-height: 15% !important;
-            }
-        }
+#btnShare .hz-icon-2:after {
+    content: '↗' !important;
+    font-size: 16px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #333 !important;
+}
+
+#btnDownPdf .hz-icon:after {
+    content: '⬇' !important;
+    font-size: 16px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #333 !important;
+}
+
+#btnPrint .hz-icon-2:after {
+    content: '🖨' !important;
+    font-size: 14px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+#btnFullscreen .hz-icon:after {
+    content: '⛶' !important;
+    font-size: 16px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: #333 !important;
+}
+
+#btnSearch .hz-icon-2:after {
+    content: '🔍' !important;
+    font-size: 14px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+/* Hide fallback symbols when background images are present */
+#pnlControls .hz-icon[style*="background-image"]:after,
+#pnlControls .hz-icon-2[style*="background-image"]:after {
+    display: none !important;
+}
+
+/* Specific button adjustments */
+#btnNavStart,
+#btnNavPrev,
+#btnNavNext, 
+#btnNavEnd {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+}
+
+#btnNavStart .hz-icon,
+#btnNavPrev .hz-icon,
+#btnNavNext .hz-icon,
+#btnNavEnd .hz-icon {
+    width: 16px !important;
+    height: 16px !important;
+    background-size: 16px 16px !important;
+}
+
+/* Action buttons (share, download, print, etc.) */
+#btnShare,
+#btnDownPdf,
+#btnPrint,
+#btnFullscreen,
+#btnSearch {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+}
+
+#btnShare .hz-icon-2,
+#btnDownPdf .hz-icon,
+#btnPrint .hz-icon-2,
+#btnFullscreen .hz-icon,
+#btnSearch .hz-icon-2 {
+    width: 22px !important;
+    height: 22px !important;
+    background-size: 22px 22px !important;
+}
+
+/* Zoom controls alignment */
+.zoom-icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+}
+
+.zoom-icon.hz-icon {
+    width: 18px !important;
+    height: 18px !important;
+    background-size: 18px 18px !important;
+}
+
+/* Hover states for better visual feedback */
+#pnlControls a:hover,
+#pnlControls button:hover {
+    background: rgba(0,0,0,0.1) !important;
+    transform: scale(1.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Active states */
+#pnlControls a:active,
+#pnlControls button:active {
+    transform: scale(0.95) !important;
+}
+
+/* Force visibility for all control elements */
+#pnlControls,
+#pnlControls * {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Remove any transforms or positioning that might hide content */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+}
+
+/* Fix common flipbook container issues */
+.magazine-viewport,
+.flipbook,
+#flipbook {
+    top: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    transform: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #pnlControls a,
+    #pnlControls button {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+    }
+    
+    #pnlControls .hz-icon,
+    #pnlControls .hz-icon-2 {
+        width: 18px !important;
+        height: 18px !important;
+        background-size: 18px 18px !important;
+    }
+    
+    #pnlControls {
+        gap: 6px !important;
+        padding: 4px 8px !important;
+    }
+    
+    .logo-backs2 {
+        bottom: 12px !important;
+        left: 12px !important;
+        max-height: 15% !important;
+    }
+    
+    /* Mobile fallback icons smaller */
+    #pnlControls .hz-icon:after,
+    #pnlControls .hz-icon-2:after {
+        font-size: 12px !important;
+    }
+}
     </style>
 
 
@@ -586,4 +749,5 @@
     </body>
 
 </html>
+
 
